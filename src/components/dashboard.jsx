@@ -32,9 +32,10 @@ function Dashboard() {
     item.name.toLowerCase().includes(search.toLowerCase()) ||
     item.email.toLowerCase().includes(search.toLowerCase())
   );
-
+  
   const totalPages = Math.ceil(filteredData.length / usersPerPage);
-  const paginatedUsers = filteredData.slice((page - 1) * usersPerPage, page * usersPerPage);
+  const paginatedUsers = filteredData.length > 10? filteredData.slice((page - 1) * usersPerPage, page * usersPerPage): filteredData;
+  
 
   const handlePageChange = (event, value) => {
     setPage(value);
